@@ -21,11 +21,11 @@ below screenshot.
 
 ![](./images/image22.png)
 
-**Step 3:**Click on Next button.
+**Step 3:** Click on Next button.
 
-**Step 4:**Accept the License agreement and click Finish button.
+**Step 4:** Accept the License agreement and click Finish button.
 
-**Step 5:**Click On Restart Now to restart the eclipse.
+**Step 5:** Click On Restart Now to restart the eclipse.
 
 ### **Configure Eclipse with Maven**
 
@@ -50,12 +50,12 @@ click on **Finish**.
 
 ![](./images/image6.png)
 
-**Step 5:**Eclipse will create **TestWebdriver** with following
+**Step 5:** Eclipse will create **TestWebdriver** with following
 structure:
 
 ![](./images/image1.png)
 
-**Step 6:** Right-click on **JRE System Library** and select the option
+**Step 6:**  Right-click on **JRE System Library** and select the option
 **Properties** from the menu.
 
 ![](./images/image3.png)
@@ -73,7 +73,7 @@ pom.xml file will Open in Editor section
 
 ![](./images/image9.png)
 
-**Step 8:** Add the Selenium, Maven, TestNG, Junit dependencies to
+**Step 8:**  Add the Selenium, Maven, TestNG, Junit dependencies to
 pom.xml in the \<project\> node:
 
 ![](./images/image10.png)
@@ -145,7 +145,7 @@ driver.quit();
 }
 ```
 
-**Step 12:** Right-click on the TestWebdriver and select **TestNG** and
+**Step 12:**  Right-click on the TestWebdriver and select **TestNG** and
 **Convert to TestNG**. Eclipse will create testng.xml which says that
 you need to run only one test with the name **NewTest** as shown in the
 below screenshot:
@@ -210,7 +210,7 @@ below code, to pom.xml in the \<plugin\> node:
 </plugins>
 ```
 
-**Step 15:** To run th**e** tests in the Maven lifecycle, Right-click on
+**Step 15:**  To run th**e** tests in the Maven lifecycle, Right-click on
 the TestWebdriver and select **Run As** **Maven test**. From the project
 Maven will execute the test.
 
@@ -257,7 +257,7 @@ Dashboard.
 
 ![](./images/image15.png)
 
-**Step 9:** Go to **Manage Jenkins** and select **Global Tool
+**Step 9:**  Go to **Manage Jenkins** and select **Global Tool
 Configuration** as shown in the below image.
 
 ![](./images/image31.png)

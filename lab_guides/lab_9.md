@@ -70,7 +70,7 @@ within the container which would include
 
 1. `git`
 2. `maven` 
-3. `Java version 8`
+3. `Java`
 
 After this it will take a clone of the required
 repository, navigate to the working directory and run the
@@ -89,7 +89,7 @@ been execute you can even access the container. Just type in
 
 **Note:**
 
-You can verify all the tools are present by running below commands
+You can verify all the tools are present by running below commands:
 
 ```
 java -version
