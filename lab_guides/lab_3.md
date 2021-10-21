@@ -1,10 +1,7 @@
 
 
-**Introduction to Jenkins?**
+#### Introduction to Jenkins
 
-
-**Maven Installtion and use it with TestNG Selenium**
------------------------------------------------------
 
 In this lab, we will use Eclipse IDE to set up Selenium WebDriver
 project, and additionally we add m2eclipse plugin to eclipse to help the
