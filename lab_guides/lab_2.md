@@ -235,29 +235,15 @@ us confirm this by performing the following steps:
 ![](./images/6124OS_2_02.jpg)
     
 
-6.  Add the Maven installation that you set up by clicking on the
-    **Add...** button.
 
-    
-![](./images/6124OS_2_03.jpg)
-    
-
-7.  You can check this installation so that it
-    is chosen instead of the **EMBEDDED**
-    installation.
-
-
-
-### How to do it\...
-
-
+### Create Maven project
 
 To create a new Maven project, perform the following steps:
 
+1.  Navigate to **File** \| **New** \| **Other** \| **Maven Project**. You will see the following screen:
 
-1.  Navigate to **File** \| **New** \| **Maven Project**. You will see the following screen:
+![](./images/6124OS3_2_04.jpg)
 
-    
 ![](./images/6124OS_2_04.jpg)
     
 
@@ -289,9 +275,6 @@ To create a new Maven project, perform the following steps:
 
 6. Copy following code in `App.java` and run the application:
 
-![](./images/3.png)
-
-
 ```
 package com.fenago.maven;
 
@@ -308,6 +291,9 @@ public class App
 }
 
 ```
+
+![](./images/3.png)
+
 
 Eclipse invokes the Maven archetype plugin to
 create a quick start project. The Eclipse console shows the steps
@@ -333,10 +319,14 @@ To import an existing Maven project in Eclipse, perform the following steps:
 ![](./images/6124OS_2_07.jpg)
     
 
-2.  Choose the project we created in the previous lab:
+2.  Choose the project we created earlier:
 
 ![](./images/6124OS_2_08.jpg)
-    
+
+**Note:** You will need to close project first to be able to import it:
+
+![](./images/close.png)
+
 3.  Import the project. You will see contents identical to what we saw
     when creating a new Maven project.
 

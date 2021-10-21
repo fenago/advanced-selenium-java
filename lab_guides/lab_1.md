@@ -167,9 +167,6 @@ This means that the installation is not done properly, make sure
 This simply means that JDK is not installed and the *JAVA\_HOME*
 variable is not properly configured.
 
-### 3) *Error: Could not find or load main class org.codehaus.plexus.classworlds.launcher.Launcher*
-
-In this case, you need to download the binary zip archive file, instead of the source zip archive.
 
 Conclusion
 ----------
