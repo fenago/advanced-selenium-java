@@ -1,7 +1,7 @@
 
 
-Browser drivers management with WebDriverManager
-================================================
+Lab 4: Using WebDriver-Manager
+===============================
 
 
 In this lab, we are going to leverage WebDriverManager by Boni

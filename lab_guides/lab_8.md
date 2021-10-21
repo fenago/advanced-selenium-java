@@ -1,13 +1,10 @@
-#### Running Test Automation Project In Docker container
-
+#### Lab 8: Creating a Docker Image
 
 In this lab, i'll explain how can we run our QA automation projects in
 docker containers. I'll take an simple example of a Java, Junit and
 Maven based test project.
 
-This is a sample project which just have a dummy test case to print some
-text on the console. Before running the project in docker container we
-will see how to run it on local.
+Before running the project in docker container we will see how to run it on local.
 
 **Prerequisites:**
 
@@ -23,7 +20,7 @@ will see how to run it on local.
 1.  Go to following directory in your lab machine:
 
 ```
-advanced-selenium-java\Lab09
+advanced-selenium-java\Lab08
 ```
 
 2. open a terminal window and cd to the project directory.

@@ -210,7 +210,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by ONUR on 24.11.2016.
+ * Created by fenago
  */
 //Driver Manager Class
 public class DriverManager {
@@ -250,7 +250,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by ONUR on 20.11.2016.
+ * Created by fenago
  */
 public class GridParallelComputerTest {
 
@@ -361,7 +361,7 @@ import java.net.URL;
 import java.util.LinkedList;
 
 /**
- * Created by onurb on 26-Nov-16.
+ * Created by fenago
  */
 public class GridParallelTestBase {
     //Declare DesiredCapabilities configuration variables

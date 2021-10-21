@@ -6,8 +6,7 @@
 **Maven Installtion and use it with TestNG Selenium**
 -----------------------------------------------------
 
-In this lab, we will use Eclipse IDE to set up [Selenium
-WebDriver](https://www.h2kinfosys.com/blog/selenium-webdriver-interface/)
+In this lab, we will use Eclipse IDE to set up Selenium WebDriver
 project, and additionally we add m2eclipse plugin to eclipse to help the
 build process and to create POM.xml file.
 
@@ -32,8 +31,7 @@ below screenshot.
 
 We now need to create Maven project once m2e plugin is installed.
 
-**Step 1:** Launch [Eclipse
-IDE](https://www.h2kinfosys.com/blog/selenium-jars-download-configure-eclipse/)
+**Step 1:** Launch Eclipse IDE
 and create a New Project by selecting **File** \> **New** \> **Other**
 from Eclipse menu.
 

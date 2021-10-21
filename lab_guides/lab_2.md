@@ -1,8 +1,8 @@
 <img align="right" src="./images/logo.png">
 
 
-Lab 2. IDE Integration with Maven
-----------------------------------------------
+Lab 2. Using Maven
+-------------------
 
 In this lab, we will cover the following topics:
 
@@ -13,7 +13,7 @@ In this lab, we will cover the following topics:
 
 
 Creating a simple project with Maven
-------------------------------------------------------
+-------------------------------------
 
 
 Let\'s start creating the first simple project using Maven, by performing the following steps:

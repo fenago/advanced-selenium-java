@@ -1,18 +1,18 @@
 
 
-How to Install Maven on Windows 10
+Lab: Install and Configure Maven
 ==================================
 
 
-In this quick tutorial, we are going to highlight **how to install Maven on windows**.
+In this lab, we are going to highlight **how to install Maven on windows**.
 
-In short, [Maven](https://maven.apache.org/) is a build automation and
+[Maven](https://maven.apache.org/) is a build automation and
 dependency management tool for Java based applications. To build a
 project, Maven uses its [project object model
 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)
 and a set of plugins.
 
-For this tutorial, I will be using:
+For this lab, we will be using:
 
 -   JDK 8
 -   Maven 3.8.3
