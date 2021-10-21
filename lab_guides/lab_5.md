@@ -7,6 +7,10 @@ In this lab, We will describe how to use Selenium Grid. You will learn
 how to install a selenium grid and how to configure it.
 
 
+#### Lab Solution
+Lab solution is present in `C:\Users\fenago\Desktop\advanced-selenium-java\Lab05` folder. 
+
+
 Go to [http://www.seleniumhq.org/download/](http://www.seleniumhq.org/download/)
 and download **Selenium Standalone Server.** Selenium team constantly
 updating the versions. You may see a different version, pls do not

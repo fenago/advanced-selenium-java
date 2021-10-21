@@ -67,7 +67,6 @@ specific folder of our choice, for example:
 
 ![Unzip Apache Maven](./images/unzip-apache-maven.jpg)
 
-> That’s all, NO installation is required to work with Mvn. Cool, right?
 
 Add *MAVEN\_HOME* Environment Variable
 --------------------------------------
@@ -78,8 +77,7 @@ The next step is to configure the *MAVEN\_HOME* variable on Windows 10.
 is *C:\\Users\\fenago\\Downloads\\apache-maven-3.8.3* in our case. Follow these
 steps to add the *MAVEN\_HOME* environment variable:
 
-1- Type **"edit"** in the Window search box, then click on the **"Edit
-the system environment variables"**
+1- Type **"edit"** in the Window search box, then click on the **"Edit the system environment variables"**
 
 ![](./images/maven-environment-variable-step-1.jpg)
 

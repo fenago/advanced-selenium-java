@@ -60,29 +60,43 @@ It supports browsers such as Chrome, Firefox, Opera, PhantomJS,
 Microsoft Edge, or Internet Explorer. You can check that in [project
 page](https://github.com/bonigarcia/webdrivermanager).
 
-All we have to do is to add its dependency through Maven or Gradle to
-download all the necessary drivers. Note that drivers will be downloaded
-only if they are not present on the WebDriverManager cache
-(\~/.m2/repository/webdriver by default). You can update this default
-location using properties file
-
-In case of **Maven project**, we need to add the following dependency in
-pom.xml :-
-
-```
-<dependency>
-<groupId>io.github.bonigarcia</groupId>
-<artifactId>webdrivermanager</artifactId>
-<version>3.0.0</version>
-</dependency>
-```
-
 
 
 You can also download this jar file and its dependencies to add as external jars in case if your project is not a maven project.
 
-Check [maven page](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager/)
-for more details of supported builder projects.
+Check [maven page](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager/) for more details of supported builder projects.
+
+**Creating The Project**
+Create a simple Java Project created by using the menu File => New => Java Project.
+
+![](./images/lab40.png)
+
+Fill out the basic information on the New Java Project dialog, then click Finish to proceed.
+
+![](./images/lab41.png)
+
+This will bring up a dialogue box to create a pom.xml file. Click “Finish” and you’ll be brought to a screen that contains the file. This file contains information on where to download extra libraries for the project. We’ll add some XML code to the file.
+
+![](./images/lab42.png)
+
+
+In case of **Maven project**, we need to add the following dependency in pom.xml :-
+
+```
+<dependencies>					
+        <dependency>				
+            <groupId>org.seleniumhq.selenium</groupId>								
+            <artifactId>selenium-java</artifactId>								
+            <version>2.45.0</version>								
+		</dependency>				
+        <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>3.0.0</version>
+        </dependency>				
+</dependencies>
+```
+
 
 **Example for launching chrome and firefox browser**
 
@@ -123,13 +137,9 @@ given browser driver binary. To use a specific version of driver, pass
 the driver version like below
 
 ```
-WebDriverManager.chromedriver().version("2.42").setup();
+WebDriverManager.chromedriver().driverVersion("94.0.4606.61").setup();
 ```
 
-
-```
-WebDriverManager.chromedriver().version("2.42").setup();
-```
 
 To download specific versions or from specific urls, change respective
 value of the variables in version.properties or
@@ -137,12 +147,10 @@ webdrivermanager.properties depending on where it is available.\
 Also you can add support to any new versions of browser driver by
 defining it in version.properties.
 
-Have a look at
-[version.properties](https://github.com/bonigarcia/webdrivermanager/blob/master/src/main/resources/versions.properties)
+Have a look at [version.properties](https://github.com/bonigarcia/webdrivermanager/blob/master/src/main/resources/versions.properties)
 
 
-Have a look at
-[webdrivermanager.properties](https://github.com/bonigarcia/webdrivermanager/blob/master/src/main/resources/webdrivermanager.properties)
+Have a look at [webdrivermanager.properties](https://github.com/bonigarcia/webdrivermanager/blob/master/src/main/resources/webdrivermanager.properties)
 
 At any time you want to change default values, copy the required files
 from [here](https://github.com/bonigarcia/webdrivermanager/tree/master/src/main/resources)

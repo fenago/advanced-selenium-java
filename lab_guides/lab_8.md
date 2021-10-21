@@ -20,7 +20,7 @@ Before running the project in docker container we will see how to run it on loca
 1.  Go to following directory in your lab machine:
 
 ```
-advanced-selenium-java\Lab08
+C:\Users\fenago\Desktop\advanced-selenium-java\Lab08
 ```
 
 2. open a terminal window and cd to the project directory.

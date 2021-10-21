@@ -5,6 +5,8 @@ Lab 6: Parallelizing the Tests for Selenium Grid
 
 In this lab, we will use two techniques and describe **how to run your selenium parallel tests** by using Selenium Grid (SG) and JUnit.
 
+#### Lab Solution
+Lab solution is present in `C:\Users\fenago\Desktop\advanced-selenium-java\Lab06` folder. 
 
 **Selenium Grid Setup for Parallel Test Execution**
 --------------------------------------------------
@@ -12,7 +14,7 @@ In this lab, we will use two techniques and describe **how to run your selenium 
 Our setup will be like that; we will have two nodes and one hub. Each
 node has got 5 Chrome, 5 Firefox and 1 Internet Explorer browser
 instances. The first node will use port 5555 and the second one will use
-5556. Thus, we will create two node JSON files. These are**node1.json**
+5556. Thus, we will create two node JSON files. These are **node1.json**
 and **node2.json.** The only difference between these JSON files is port
 number.
 
