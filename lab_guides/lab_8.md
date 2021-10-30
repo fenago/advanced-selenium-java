@@ -70,7 +70,7 @@ COPY pom.xml /sample
 1.  **FROM** command will take 'maven:3.6-jdk-8-slim' as a base image.
 2.  **WORKDIR** /sample will create a directory **/sample**inside the
     docker container which will act as a project directory.
-3.  **COPY**src /sample/src****will copy the **src** folder from your
+3.  **COPY src /sample/src** will copy the **src** folder from your
     local machine to **/sample/src** directory inside the docker
     container.
 4.  **COPY** pom.xml /sample will copy the **pom.xml**file from your
@@ -89,7 +89,7 @@ docker build -t samplemaven:latest .
 
 **-t** is used to tag the image
 
-**samplemaven**is the name of the image that we have given
+**samplemaven** is the name of the image that we have given
 
 **latest** is the tag that we have given to the image
 
@@ -103,7 +103,7 @@ the project direcctory
 once all steps are completed, a image will be build with the name
 **samplemaven** in your local.
 
-Now run **docker images**to see the images on your local. You should see
+Now run **docker images** to see the images on your local. You should see
 the following entry along with other images (if you have any already)
 
 ![](./images/1582712087171)
@@ -115,12 +115,12 @@ container using this image by running the following command.
 docker run -it --name samplecontainer samplemaven:latest /bin/bash
 ```
 
-here **-i**t represents that we are running the container in the
+here **-it** represents that we are running the container in the
 **interactive mode**
 
 **--name** we are using to name the container as**samplecontainer**
 
-**samplemaven:latest**is the name of the image that we created in step 1
+**samplemaven:latest** is the name of the image that we created in step 1
 which we want to run
 
 **/bin/bash** is the argument that we are passing to open the bash

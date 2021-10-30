@@ -70,31 +70,51 @@ pom.xml file will Open in Editor section
 
 ![](./images/image9.png)
 
-**Step 8:**  Add the Selenium, Maven, TestNG, Junit dependencies to
-pom.xml in the \<project\> node:
+**Step 8:**  Add the Selenium, Maven, TestNG, Junit dependencies to pom.xml in the \<project\> node by replacing `pom.xml` content with following:
 
-![](./images/image10.png)
 
 ```
-<dependencies>			
-        <dependency>				
-             <groupId>junit</groupId>								
-             <artifactId>junit</artifactId>								
-             <version>3.8.1</version>								
-             <scope>test</scope>								
-        </dependency>				
-        <dependency>				
-            <groupId>org.seleniumhq.selenium</groupId>								
-            <artifactId>selenium-java</artifactId>								
-            <version>2.45.0</version>								
-		</dependency>				
-        <dependency>				
-            <groupId>org.testng</groupId>								
-            <artifactId>testng</artifactId>								
-            <version>6.10.0</version>								
-            <scope>test</scope>							  			
-       </dependency>				
-</dependencies>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>TestWebdriver</groupId>
+    <artifactId>TestWebdriver</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>htmlunit-driver</artifactId>
+            <version>2.33.3</version>
+        </dependency>
+    </dependencies>
+
+</project>
 ```
 
 **Step 9:** Create a New TestNG Class. Enter Package name as "testing"
@@ -113,32 +133,37 @@ screenshot:
 ```
 package testing;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.*;
 
 public class NewTest {
-    private WebDriver driver;
-@Test
-public void testEasy() {
-driver.get("https://www.facebook.com/");  
-String title = driver.getTitle();  
-//Assert.assertTrue(title.contains("Facebook"));
-Assert.assertTrue(driver.getTitle().contains("Facebook"));
 
-}
-@BeforeTest
-public void beforeTest() {
-    driver = new FirefoxDriver();  
-}
-@AfterTest
-public void afterTest() {
-driver.quit();
-}
+    private WebDriver driver;
 
+    @Test
+    public void testEasy() {
+        driver.get("https://www.facebook.com/");
+        String title = driver.getTitle();
+        assertTrue(title.contains("Facebook"));
+    }
+    @BeforeMethod
+    public void setUp() {
+        System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\drivers\\firefox\\geckodriver.exe");
+        driver = new FirefoxDriver();
+        // Uncomment following to user HtmlUnitDriver instead of firefox
+        // driver = new HtmlUnitDriver();
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 }
 ```
 
@@ -179,32 +204,74 @@ configure the testing.xml for TestNG test and generate to test reports
 this plugin is used.
 
 The maven-compiler-plugin is used in compiling the code and using the
-particular JDK version for compilation. Add all the dependencies in the
-below code, to pom.xml in the \<plugin\> node:
+particular JDK version for compilation. Add all the dependencies to the pom.xml in the \<plugin\> node. Replace `pom.xml` with following: 
 
 ```
-<plugins>
-  <plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-compiler-plugin</artifactId>
-<version>2.3.2.</version>
-<configuration>
-<source>1.7</source>
-<target>1.7</target>
-</configuration>
-</plugin>
-  <plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-surefire-plugin</artifactId>
-<version>2.12</version>
-<inherited>true</inherited>
-<configuration>
-<suiteXmlFiles>
-  <suiteXmlFile>testng.xml</suiteXmlFile>
-</suiteXmlFiles>
-</configuration>
-</plugin>
-</plugins>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>TestWebdriver</groupId>
+    <artifactId>TestWebdriver</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>htmlunit-driver</artifactId>
+            <version>2.33.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <!-- <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration> -->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
 ```
 
 **Step 15:**  To run th**e** tests in the Maven lifecycle, Right-click on
@@ -254,8 +321,7 @@ Dashboard.
 
 ![](./images/image15.png)
 
-**Step 9:**  Go to **Manage Jenkins** and select **Global Tool
-Configuration** as shown in the below image.
+**Step 9:**  Go to **Manage Jenkins** and select **Global Tool Configuration** as shown in the below image.
 
 ![](./images/image31.png)
 
@@ -288,7 +354,7 @@ Maven will build the project. It will have TestNG execute the test
 cases.
 
 **Step 13:** Once the build process is completed, in Jenkins Dashboard
-click on the** TestWebdriver** project.
+click on the **TestWebdriver** project.
 
 ![](./images/image30.png)
 

@@ -2,15 +2,21 @@ Lab 9: Selenium in Docker
 =========================
 
 
-Pre-requisites for executing the automation tests 
+Pre-requisites for executing the automation tests.
+
+
+Go to following directory in your lab machine:
+
+```
+C:\Users\fenago\Desktop\advanced-selenium-java\Lab09
+```
 
 1. The project should be a maven project with a properly implemented pom.xml with all the project dependencies in it.
 
 Step-1: To begin with we would want to have an image where we can ship
 our changes and containerize it. So, just type in **docker run ubuntu**
 Once you do that it will try searching your image locally. If
-it does not get an image it will download an image from the "*Docker
-registry*".
+it does not get an image it will download an image from the "*Docker registry*".
 
 Once this is done you can check the images and the containers locally
 present in your host machine.
@@ -21,7 +27,7 @@ will give you the list of all the images in the system. Check the image
 to refer
 
 
-Step-3: Now what er need to do is configure a template which is
+Step-3: Now what we need to do is configure a template which is
 basically called a "**Dockerfile**". The Docker client uses this
 template to interact with the daemon process. Create a file in your
 project root folder named as "**Dockerfile**".
@@ -55,11 +61,14 @@ RUN apt -y install firefox xvfb
 # Install git on ubuntu-selenium image
 RUN apt-get install -y git
 
-# Get the repository onto the local system
-RUN git clone https://github.com/fenago/cucs-selenium-docker
+
+WORKDIR /TestWebdriver
+COPY TestWebdriver /TestWebdriver
+
+# Note: You can also run following command if source is present in github public repo
+# RUN git clone https://github.com/username/repo-name
 
 # Run the maven command to execute all the tests
-WORKDIR cucs-selenium-docker
 RUN mvn clean install test
 
 ENTRYPOINT ["/bin/bash"]
