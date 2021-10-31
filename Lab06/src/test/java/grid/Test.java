@@ -24,7 +24,6 @@ public class Test {
         //  System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\drivers\\firefox\\geckodriver.exe");
         //  driver = new FirefoxDriver();
 
-
         //CHROME
         String chromeDriverLocation = "C:\\Selenium\\drivers\\chrome\\chromedriver.exe";
         System.out.println("Chrome Driver: " + chromeDriverLocation );

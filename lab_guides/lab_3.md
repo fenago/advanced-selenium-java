@@ -115,10 +115,11 @@ public class NewTest {
     }
     @BeforeMethod
     public void setUp() {
-        System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\drivers\\firefox\\geckodriver.exe");
-        driver = new FirefoxDriver();
-        // Uncomment following to user HtmlUnitDriver instead of firefox
-        // driver = new HtmlUnitDriver();
+        // Uncomment following lines to use firefox instead of HtmlUnitDriver
+        // System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\drivers\\firefox\\geckodriver.exe");
+        // driver = new FirefoxDriver();
+        
+        driver = new HtmlUnitDriver();
     }
 
     @AfterMethod
