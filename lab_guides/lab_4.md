@@ -7,6 +7,8 @@ Lab 4: Using WebDriver-Manager
 In this lab, we are going to leverage WebDriverManager by Boni
 Garcia to setup browser drivers required to execute our tests.
 
+**Problem Statement**
+
 We all know that we need to have browser drivers, .exe files like
 chromedriver.exe and geckodriver.exe in case of windows environment or
 binary files like chromedriver and geckodriver in case of linux
@@ -57,50 +59,53 @@ in an automated way and helps us to avoid all the manual steps that we
 do previously related to browser drivers to run our tests.
 
 It supports browsers such as Chrome, Firefox, Opera, PhantomJS,
-Microsoft Edge, or Internet Explorer. You can check that in [project
-page](https://github.com/bonigarcia/webdrivermanager).
+Microsoft Edge, or Internet Explorer. You can check that in [project page](https://github.com/bonigarcia/webdrivermanager).
 
-
-
-You can also download this jar file and its dependencies to add as external jars in case if your project is not a maven project.
 
 Check [maven page](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager/) for more details of supported builder projects.
 
-**Creating The Project**
-Create a simple Java Project created by using the menu File => New => Java Project.
+**Solution**
 
-![](./images/lab40.png)
+Lab solution is present in following directory:
 
-Fill out the basic information on the New Java Project dialog, then click Finish to proceed.
+`C:\Users\fenago\Desktop\advanced-selenium-java\Lab04\simple-project`
 
-![](./images/lab41.png)
+**Maven Project**
 
-This will bring up a dialogue box to create a pom.xml file. Click “Finish” and you’ll be brought to a screen that contains the file. This file contains information on where to download extra libraries for the project. We’ll add some XML code to the file.
+We will use `simple-project` maven project created in Lab 2.
 
-![](./images/lab42.png)
-
-
-In case of **Maven project**, we need to add the following dependency in pom.xml :-
+In case of **Maven project**, we need to add the following dependency in pom.xml:
 
 ```
-<dependencies>					
-        <dependency>				
-            <groupId>org.seleniumhq.selenium</groupId>								
-            <artifactId>selenium-java</artifactId>								
-            <version>2.45.0</version>								
-		</dependency>				
+    <dependencies>
         <dependency>
-        <groupId>io.github.bonigarcia</groupId>
-        <artifactId>webdrivermanager</artifactId>
-        <version>3.0.0</version>
-        </dependency>				
-</dependencies>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+    </dependencies>
 ```
 
+Right-click on pom.xml and select **Maven | Reload project**
 
-**Example for launching chrome and firefox browser**
+![](./images/d1.png)
+
+**Launch chrome and firefox browser**
+
+
+- Define new class called `WebDriverManagerTest` and copy following code:
+
+![](./images/m4.png)
+
 
 ```
+package com.fenago.maven;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -109,37 +114,39 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WebDriverManagerTest {
     public static void main(String[] args) {
+        System.out.println("Chrome WebDriverManagerTest...");
         new WebDriverManagerTest().testDriverManagerChrome();
+        System.out.println("FireFox WebDriverManagerTest...");
         new WebDriverManagerTest().testDriverManagerFirefox();
     }
-    
+
     public void testDriverManagerChrome() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
-        driver.get("http://www.google.com/");
+        driver.get("https://www.google.com/");
         System.out.println(driver.getTitle());
         driver.quit();
     }
-    
+
     public void testDriverManagerFirefox(){
         WebDriverManager.firefoxdriver().setup();
         WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.google.com/");
+        driver.get("https://www.google.com/");
         System.out.println(driver.getTitle());
         driver.quit();
     }
 }
 ```
 
+**Run WebDriver Application**
 
-Webdrivermanager, by default, tries to download the latest version of a
-given browser driver binary. To use a specific version of driver, pass
-the driver version like below
+![](./images/d2.png)
 
-```
-WebDriverManager.chromedriver().driverVersion("94.0.4606.61").setup();
-```
+![](./images/d3.png)
 
+
+
+**Note:**
 
 To download specific versions or from specific urls, change respective
 value of the variables in version.properties or

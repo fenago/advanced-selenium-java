@@ -7,68 +7,25 @@ In this lab, we will use Eclipse IDE to set up Selenium WebDriver
 project, and additionally we add m2eclipse plugin to eclipse to help the
 build process and to create POM.xml file.
 
-### **Steps to add m2eclipse plugin to Eclipse:**
+#### Configure Eclipse with Maven
 
-**Step 1:** Launch Eclipse IDE and click on Help \> Select Install New
-Software
+We now need to create Maven project.
 
-**Step 2: Enter the URL** [http://download.eclipse.org/technology/m2e/releases/](http://download.eclipse.org/technology/m2e/releases/)
-on the Install dialog. Select Work with and m2e plugin as shown in the
-below screenshot.
+**Step 1:** In IntelliJ, select `File` | `New` | `New Project`
 
-![](./images/image22.png)
+**Step 2:** Select Maven on left side of window then click on Next button
 
-**Step 3:** Click on Next button.
+![](./images/m1.png)
 
-**Step 4:** Accept the License agreement and click Finish button.
+**Step 3:** Enter **TestWebdriver** in the Name field
 
-**Step 5:** Click On Restart Now to restart the eclipse.
+**Step 4:** Click on the arrow next to Artifact Coordinates
 
-### **Configure Eclipse with Maven**
+**Step 5:** Change the Group Id and Artifact Id to TestWebdriver as well
 
-We now need to create Maven project once m2e plugin is installed.
+**Step 6:**  Click Finish
 
-**Step 1:** Launch Eclipse IDE
-and create a New Project by selecting **File** \> **New** \> **Other**
-from Eclipse menu.
-
-**Step 2:** On the **New** dialog box, Expand **Maven** and select
-**Maven Project** and click Next.
-
-![](./images/image4.png)
-
-**Step 3:** On the **New Maven Project**, check the **Create a simple
-project** and click on Next.
-
-![](./images/image8.png)
-
-**Step 4:** Enter TestWebdriver in **Group Id**, **Artifact Id** and
-click on **Finish**.
-
-![](./images/image6.png)
-
-**Step 5:** Eclipse will create **TestWebdriver** with following
-structure:
-
-![](./images/image1.png)
-
-**Step 6:**  Right-click on **JRE System Library** and select the option
-**Properties** from the menu.
-
-![](./images/image3.png)
-
-On **JRE System Library** **Properties**dialog box, make
-sure **Workspace default JRE** is selected and click Apply and Close.
-
-![](./images/image13.png)
-
-**Step 7:** Double-click on **pom.xml** from **Project Explorer**.
-
-![](./images/image2.png)
-
-pom.xml file will Open in Editor section
-
-![](./images/image9.png)
+**Step 7:** When asked if you want to open this project in a new window or this window, select `This Window`
 
 **Step 8:**  Add the Selenium, Maven, TestNG, Junit dependencies to pom.xml in the \<project\> node by replacing `pom.xml` content with following:
 
@@ -117,18 +74,22 @@ pom.xml file will Open in Editor section
 </project>
 ```
 
-**Step 9:** Create a New TestNG Class. Enter Package name as "testing"
-and "NewTest" in the **Name**: textbox and click on
-the **Finish** button
+**Step 9:** Right-click on pom.xml and select **Maven | Reload project**
 
-![](./images/image11.png)
+**Step 10:** Create a new class under src/main/java:
 
-**Step 10:** Eclipse will create the NewTest class as shown in the below
-screenshot:
+        - Put it in package testing
+        - Give the class the name NewFile
 
-![](./images/image5.png)
+**Step 11:** Open the new file, and right-click on the class name. Select Generate... and then select Test...
 
-**Step 11:** Add the below code to the **NewTest** class
+**Step 12:** In Create Test pop-up window, change the Testing library to TestNG
+
+**Step 13:** Define the class name to be NewTest and select to generate setUp and tearDown
+
+**Step 14:** Click `OK`
+
+**Step 15:** Add the below code to the **NewTest** class
 
 ```
 package testing;
@@ -167,33 +128,25 @@ public class NewTest {
 }
 ```
 
-**Step 12:**  Right-click on the TestWebdriver and select **TestNG** and
-**Convert to TestNG**. Eclipse will create testng.xml which says that
-you need to run only one test with the name **NewTest** as shown in the
-below screenshot:
+**Step 16:**  Write `testng.xml` file.
 
-![](./images/image19.png)
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "Suite">
+    <test thread-count="5" name= "Test">
+        <classes>
+            <class name="testing.NewTest"></class>
+        </classes>
+    </test>
+</suite>
+```
 
-![](./images/image20.png)
-
-Update the project and make sure that file appears in the tree **Package
-Explorer** (right click on the project and click Refresh).
-
-![](./images/image12.png)
-
-**Step 13:** Now run the above test through this **testng.xml.**
-
-Go to the **Run Configurations under Run**and create a new
-launch **TestNG**, select the project and
-field **Suite** as **testng.xml** and click Run
-
-![](./images/image7.png)
-
-![](./images/image29.png)
+**Step 17:** Right-click on project name and go to Modify Run Configuration... | All Tests (the second one)
 
 This will launch the website and finished the build successfully.
 
-**Step 14:** Additionally, to pom.xml we need to add
+**Step 18:** Additionally, to pom.xml we need to add
 
 1.  maven-compiler-plugin
 2.  maven-surefire-plugin
@@ -204,7 +157,7 @@ configure the testing.xml for TestNG test and generate to test reports
 this plugin is used.
 
 The maven-compiler-plugin is used in compiling the code and using the
-particular JDK version for compilation. Add all the dependencies to the pom.xml in the \<plugin\> node. Replace `pom.xml` with following: 
+particular JDK version for compilation. Add all the dependencies to the pom.xml in the \<plugin\> node. Replace  complete `pom.xml` with following: 
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -274,18 +227,16 @@ particular JDK version for compilation. Add all the dependencies to the pom.xml 
 </project>
 ```
 
-**Step 15:**  To run th**e** tests in the Maven lifecycle, Right-click on
-the TestWebdriver and select **Run As** **Maven test**. From the project
-Maven will execute the test.
+**Step 19:** Update Maven, then run the tests
+                - Go to Maven tag and select
 
-![](./images/image26.png)
 
 This will launch the website and finished the build successfully.
 
 **Installation steps for Jenkins and configure it to Run Maven with TestNg**
 -----------------------------------------------------------------------------
 
-Step 1: Go to the URL [https://www.jenkins.io/](https://www.jenkins.io/)
+**Step 1:** Go to the URL [https://www.jenkins.io/](https://www.jenkins.io/)
 and download the package for your OS and click Download button.
 
 ![](./images/image23.png)

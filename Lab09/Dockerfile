@@ -11,9 +11,6 @@ RUN apt-get install -y default-jre
 # Install maven on ubuntu-selenium image
 RUN apt-get install -y maven
 
-# Install firefox
-RUN apt -y install firefox xvfb
-
 # Install git on ubuntu-selenium image
 RUN apt-get install -y git
 

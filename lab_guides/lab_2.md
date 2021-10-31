@@ -8,8 +8,8 @@ In this lab, we will cover the following topics:
 
 - Creating a simple project with Maven
 - Building a simple project with Maven
-- Creating a new Maven project in Eclipse
-- Importing an existing Maven project in Eclipse
+- Creating a new Maven project in IntelliJ
+- Importing an existing Maven project in IntelliJ
 
 
 Creating a simple project with Maven
@@ -194,86 +194,31 @@ The `package` phase packages the artifacts to the format specified in the `pom.x
 
 
 
-Creating a new Maven project in Eclipse
----------------------------------------------------------
+Creating a new Maven project in IntelliJ
+----------------------------------------------------
 
-The recent versions of Eclipse come preinstalled with Maven support. Let
-us confirm this by performing the following steps:
+- Open IntelliJ IDE and Click `New Project` button
+- In New Project window, select Maven on the left
+- At this point, we are not going to start from an archetype, so just click on Next button at the bottom
 
+![](./images/m1.png)
 
-1.  Launch Eclipse and click on the **About Eclipse** button
-    in the **Help** menu, as shown in the following screenshot:
+- Give a project name of `simple-project`
+- Click on arrow next to Artifact Coordinates and fill out as we did using maven cli
+    - Group Id: **com.fenago.maven**
+    - Artifact Id: **simple-project**
+- Click Finish
 
-    
-![](./images/6124OS_2_26.jpg)
-    
+![](./images/m2.png)
 
-2.  Click on the  **m2** icon from the
-    list of icons that you see:
+- When it is finished loading into the IDE, the `pom.xml` the pom.xml file itself will be open. The Maven tab on the right side of the IDE may or may not be open.
+- Define new package of `com.fenago.maven`
+![](./images/m3.png)
 
-    
-![](./images/6124OS_2_27.jpg)
-    
+- Define new class called App
+![](./images/m4.png)
 
-3.  On clicking the **m2** icon, you should see something
-    similar to the following screenshot:
-
-    
-![](./images/6124OS_2_01.jpg)
-    
-
-4.  Click on the **Maven** link by navigating to
-    **Window** \| **Preferences** from the Eclipse
-    menu bar.
-
-5.  Click on  **Installations**. You will
-    see the existing installations available to
-    Eclipse. It uses an **EMBEDDED** installation of Maven
-    that comes with Eclipse, as shown in the following screenshot:
-
-    
-![](./images/6124OS_2_02.jpg)
-    
-
-
-### Create Maven project
-
-To create a new Maven project, perform the following steps:
-
-1.  Navigate to **File** \| **New** \| **Other** \| **Maven Project**. You will see the following screen:
-
-![](./images/6124OS3_2_04.jpg)
-
-![](./images/6124OS_2_04.jpg)
-    
-
-2.  Check the **Create a simple project (skip archetype selection)** option to avoid choosing what to create.
-
-3.  Fill the same values that we specified as parameters in the *Lab 1*,
-    (**Group Id:**
-    `com.fenago.maven`, **Artifact Id:**
-    `simple-project`) to create a simple Maven project.
-
-    
-![](./images/6124OS_2_05.jpg)
-    
-
-4.  Click on **Finish**. Your project is
-    now set up. Click on the `pom.xml`
-    file. You will see the following screenshot:
-
-    
-![](./images/6124OS_2_06.jpg)
-
-5. Create New Class as shown below:
-
-![](./images/1.png)
-
-6. Use following parameters and click `Finish`:
-
-![](./images/2.png)
-
-6. Copy following code in `App.java` and run the application:
+- Copy following code in `App.java` and run the application:
 
 ```
 package com.fenago.maven;
@@ -292,50 +237,18 @@ public class App
 
 ```
 
-![](./images/3.png)
+![](./images/m5.png)
 
 
-Eclipse invokes the Maven archetype plugin to
-create a quick start project. The Eclipse console shows the steps
-performed, and the project is created.
-
-The folder structure and contents are identical to the project created from the command-line.
+**Note:** The folder structure and contents are identical to the project created from the command-line.
 
 
-#### Importing an existing Maven project in Eclipse
+#### Importing an existing Maven project in IntelliJ
 
-If you have already set up a Maven project from the
-command-line, then it can easily be imported to
-Eclipse.
-
+If you have already set up a Maven project from the command-line, then it can easily be imported to IntelliJ.
 
 ### How to do it\...
 
-To import an existing Maven project in Eclipse, perform the following steps:
-
-
-1.  Navigate to **File** \| **Import...** and click on **Maven**:
-
-![](./images/6124OS_2_07.jpg)
-    
-
-2.  Choose the project we created earlier:
-
-![](./images/6124OS_2_08.jpg)
-
-**Note:** You will need to close project first to be able to import it:
-
-![](./images/close.png)
-
-3.  Import the project. You will see contents identical to what we saw
-    when creating a new Maven project.
-
-
-
-### How it works\...
-
-Eclipse has built-in support for Maven projects. When a Maven project is
-imported, it parses the pom file, `pom.xml`, for the specified
-project. Based on the project\'s pom configuration file, it creates
-relevant Eclipse configurations to recognize source files, tests, and
-artifacts.
+- File | New | Project from Existing Sources (or Module from Existing Sources if we want to keep the original project in the same window)
+- Find the simple-project we defined at the command line, select it and click on OK button
+- Select Import module from external model. Then select Maven and click the Finish button
