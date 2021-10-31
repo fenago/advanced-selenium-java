@@ -21,6 +21,10 @@ public class NewTest {
     }
     @BeforeMethod
     public void setUp() {
+        // Uncomment following lines to use firefox instead of HtmlUnitDriver
+        // System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\drivers\\firefox\\geckodriver.exe");
+        // driver = new FirefoxDriver();
+        
         driver = new HtmlUnitDriver();
     }
 

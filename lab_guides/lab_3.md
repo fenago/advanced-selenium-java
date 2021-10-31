@@ -23,7 +23,9 @@ We now need to create Maven project.
 
 **Step 5:** Change the Group Id and Artifact Id to TestWebdriver as well
 
-**Step 6:**  Click Finish
+**Step 6:**  Click `Finish`
+
+![](./images/j1.png)
 
 **Step 7:** When asked if you want to open this project in a new window or this window, select `This Window`
 
@@ -78,18 +80,24 @@ We now need to create Maven project.
 
 **Step 10:** Create a new class under src/main/java:
 
-        - Put it in package testing
-        - Give the class the name NewFile
+    - Put it in package `testing`
+    - Give the class the name `NewFile`
+
+![](./images/j2.png)
 
 **Step 11:** Open the new file, and right-click on the class name. Select Generate... and then select Test...
 
-**Step 12:** In Create Test pop-up window, change the Testing library to TestNG
+![](./images/j3.png)
 
-**Step 13:** Define the class name to be NewTest and select to generate setUp and tearDown
+**Step 12:** In Create Test pop-up window, change the Testing library to `TestNG`
+
+**Step 13:** Define the class name to be **NewTest** and select to generate `setUp` and `tearDown`
 
 **Step 14:** Click `OK`
 
-**Step 15:** Add the below code to the **NewTest** class
+![](./images/j4.png)
+
+**Step 15:** Add the below code to the **NewTest** class:
 
 ```
 package testing;
@@ -129,7 +137,7 @@ public class NewTest {
 }
 ```
 
-**Step 16:**  Write `testng.xml` file.
+**Step 16:** Create `testng.xml` file.
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -229,7 +237,10 @@ particular JDK version for compilation. Add all the dependencies to the pom.xml 
 ```
 
 **Step 19:** Update Maven, then run the tests
-                - Go to Maven tag and select
+
+![](./images/j5.png)
+
+![](./images/j6.png)
 
 
 This will launch the website and finished the build successfully.
@@ -251,6 +262,10 @@ the below image:
 
 ![](./images/image24.png)
 
+![](./images/j8.png)
+
+![](./images/j11.png)
+
 **Step 4:** Click on **Install** button.
 
 ![](./images/image18.png)
@@ -260,7 +275,7 @@ the Jenkins Dashboard (http://localhost:8080) in the browser window.
 
 ![](./images/image32.png)
 
-**Step 6:** Click on the **New Item**to create a job.
+**Step 6:** Click on the **New Item** to create a job.
 
 ![](./images/image16.png)
 
@@ -285,41 +300,48 @@ Enter JDK Name: java 1.8.0
 JAVA_HOME C:\Program Files\Java\jdk1.8.0_202
 ```
 
-![](./images/image28.png)
+![](./images/j7.png)
 
 **Step 10:** Go to the **Build** section of created job.
 
-Add the pom.xml file’s path in the **Root POM** option.
+![](./images/j9.png)
 
-![](./images/image27.png)
+
+First, set variables using windows batch commands:
+
+```
+setx /M MAVEN_HOME "C:\Users\fenago\Downloads\apache-maven-3.8.3"
+setx /M PATH "%MAVEN_HOME%\bin;%PATH%"
+```
+
+**Note:** Update the above `MAVEN_HOME` variable incase you have downloaded different version.
+
+Then, add the pom.xml file’s path in the **POM** option.
+
+
+![](./images/j10.png)
+
 
 **Step 11:** Click on the **Apply** button.
 
 ![](./images/image21.png)
 
-**Step 12:** On the TestWebdriver project page, click on the **Build
-Now** link.
+**Step 12:** On the TestWebdriver project page, click on the **Build Now** link.
 
 ![](./images/image17.png)
 
-Maven will build the project. It will have TestNG execute the test
-cases.
+Maven will build the project. It will have TestNG execute the test cases.
 
 **Step 13:** Once the build process is completed, in Jenkins Dashboard
 click on the **TestWebdriver** project.
 
 ![](./images/image30.png)
 
-**Step 14:**  The TestWebdriver project page displays the build history
-and links to the results as shown in the below image:
+**Step 14:**  The TestWebdriver project page displays the build history as shown in the below image:
 
 ![](./images/image25.png)
 
-**Step 15:** To view the test results click on the "Latest Test Result" link.
-
-![](./images/image301.png)
-
-**Step 16:** Select specific build, and you will see the current status by clicking on "console output".
+**Step 15:** Select specific build, and you will see the current status by clicking on "console output".
 
 ![](./images/image302.png)
 

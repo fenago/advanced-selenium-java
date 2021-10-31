@@ -37,7 +37,7 @@ installed on our machine:
 
         
             C:\Users\fenago>echo %JAVA_HOME%
-            C:\Program Files\Java\jdk1.8.0_261
+            C:\Program Files\Java\jdk1.8.0_202
 
             C:\Users\fenago>java -version
             java version "1.8.0_261"
@@ -46,8 +46,9 @@ installed on our machine:
 
             C:\Users\fenago>
         
+![](./images/java.png)
 
-As we can see, the installed version of JDK is *1.8.0\_261*.
+As we can see, the installed version of JDK is *1.8.0_202*.
 
 Download Apache Maven for Windows
 ---------------------------------
@@ -84,9 +85,13 @@ steps to add the *MAVEN\_HOME* environment variable:
 2- Next, select the **"Environment Variables…"** button
 
 3- Click on the **"New…"** button and put *MAVEN\_HOME* as variable name
-and *C:\\Users\\fenago\\Downloads\\apache-maven-3.8.3* as variable value
+and *C:\\Users\\fenago\\Downloads\\apache-maven-3.8.3* as variable value.
 
 ![](./images/maven-environment-variable-step-2.jpg)
+
+**Note:** Make sure to add variable in `System Variables` as well:
+
+![](./images/system.png)
 
 another way to set up *MAVEN\_HOME* is to use command lines. To do so,
 open a new command prompt as administrator and type the following
