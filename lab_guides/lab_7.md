@@ -36,7 +36,6 @@ and verify your installation:
 ```
 PS C:\Users\fenago> docker --version
 PS C:\Users\fenago> docker-compose --version
-PS C:\Users\fenago> docker-machine --version
 ```
 
 Before you stop, let’s test a Dockerized webserver; from PowerShell or
@@ -52,15 +51,4 @@ the download completes, point your web browser to
 [http://localhost](http://localhost/) to view the start page. You should see:
 
 
-
-### Welcome to nginx!
-
-If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.
-
-For online documentation and support please refer to
-[nginx.org](https://nginx.org/). Commercial support is available at
-[nginx.com](https://nginx.com/).
-
-*Thank you for using nginx.*
-
+![](./images/nginx.png)
