@@ -11,6 +11,8 @@ Lab solution is present in `C:\Users\fenago\Desktop\advanced-selenium-java\Lab06
 **Selenium Grid Setup for Parallel Test Execution**
 --------------------------------------------------
 
+**Note:** Below config files are present in `C:\Users\fenago\Desktop\advanced-selenium-java\Lab06\config` folder. 
+
 Our setup will be like that; we will have two nodes and one hub. Each
 node has got 5 Chrome, 5 Firefox and 1 Internet Explorer browser
 instances. The first node will use port 5555 and the second one will use
@@ -21,6 +23,7 @@ number.
 ```
 {
   "capabilities":
+  [
     {
       "browserName": "firefox",
       "maxInstances": 5,
@@ -93,7 +96,7 @@ number.
 }
 ```
 
-We created two node JSON files. Our hub.JSON file remains same as shown
+We created two node JSON files. Our `hub.json` file remains same as shown
 below.
 
 
@@ -148,7 +151,7 @@ After these settings our **C:\\Selenium\\Grid** folder will look like below.
 ![](./images/img_583a16f61b4f3.png)
 
 
-When we run "**rungrid.bat**" file it starts hub a nd nodes
+When we run "**rungrid.bat**" file it starts hub and two nodes
 consecutively. After that, when you go to
 **http://localhost:4444/grid/console** you will see that two nodes
 registered to one hub as shown below.
@@ -158,10 +161,13 @@ registered to one hub as shown below.
 
 Now, we are ready to code parallel test execution with our grid setup. I will show you two techniques to run your selenium tests with JUnit.
 
-**JUnit Parallel Test Execution Techniques**
+**JUnit Parallel Test Execution**
 --------------------------------------------
 
-### **1) Run Selenium Tests in Parallel using JUnit’s Parallel Computer Class**
+### Run Selenium Tests in Parallel using JUnit’s Parallel Computer Class**
+
+Solution files are present in following folder:
+`C:\Users\fenago\Desktop\advanced-selenium-java\Lab06\src\test\java\grid\ParallelComputerGrid`
 
 
 ```
@@ -197,7 +203,7 @@ and in the second one, we have one test method.
 
 I used 4 classes for this test. First one is **DriverManager**, it sets
 which browser driver will be used for the test.
-**GridParallelComputerTest**class modifies**ParallelComputer** class and
+**GridParallelComputerTest** class modifies**ParallelComputer** class and
 runs the tests in parallel, the other two classes are test classes,
 **ParallelTest1** and **ParallelTest2**.
 
@@ -282,194 +288,12 @@ public class GridParallelComputerTest {
 }
 ```
 
-### **2) Run Selenium Tests in Parallel using JUnit’s Parametrized Class**
-
-**Parallellized class** is a helper class and you can define threat
-count in this class’s **ThreadPoolScheduler** method. In
-**GridParallelTestBase** class, I set which browsers I will use for the
-test by using **@Parameterized.Parameters** annotation. Here, I added
-Chrome and Firefox browsers. Thus, our test will open two browsers and
-they will be Chrome and Firefox.
-
-I created **DesiredCapabilities** and RemoteWebdriver below @Before
-annotation. All test setup is done in this Class’s **setup method** and
-I also added a **screenshot capture method** in this class.
-
-**GridParallelTest**class is our test class and it extends
-**GridParallelTestBase** class. In its test method, I set the platform,
-go to yahoo.com, print the yahoo’s title, and take a screenshot.
-
-
-```
-import org.junit.runners.Parameterized;
-import org.junit.runners.model.RunnerScheduler;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
-public class Parallelized extends Parameterized {
-
-    private static class ThreadPoolScheduler implements RunnerScheduler {
-        private ExecutorService executor;
-
-        //You can set number of parallel threads in this method.
-        //I set 5 and our grid will run 5 parallel test execution.
-        public ThreadPoolScheduler() {
-            String threads = System.getProperty("junit.parallel.threads", "5");
-            int numThreads = Integer.parseInt(threads);
-            executor = Executors.newFixedThreadPool(numThreads);
-        }
-
-        //@Override
-        public void finished() {
-            executor.shutdown();
-            try {
-                executor.awaitTermination(10, TimeUnit.MINUTES);
-            } catch (InterruptedException exc) {
-                throw new RuntimeException(exc);
-            }
-        }
-
-        //@Override
-        public void schedule(Runnable childStatement) {
-            executor.submit(childStatement);
-        }
-    }
-
-    public Parallelized(Class<?> klass) throws Throwable {
-        super(klass);
-        setScheduler(new ThreadPoolScheduler());
-    }
-}
-```
-
-
-```
-import org.apache.commons.io.FileUtils;
-import org.junit.Before;
-import org.junit.runners.Parameterized;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.LinkedList;
-
-/**
- * Created by fenago
- */
-public class GridParallelTestBase {
-    //Declare DesiredCapabilities configuration variables
-    protected String browserName;
-    protected Platform platformName;
-    protected WebDriver driver;
-
-    //Hold all Configuration values in a LinkedList
-    //Extra Usage Information: http://www.swtestacademy.com/junit-parametrized-tests/
-    @Parameterized.Parameters
-    public static LinkedList<String[]> getEnvironments() throws Exception {
-        LinkedList<String[]> env = new LinkedList<String[]>();
-        env.add(new String[]{"firefox"});
-        env.add(new String[]{"chrome"});
-        //add more browsers here
-        return env;
-    }
-
-    //Constructor
-    public GridParallelTestBase(String browserName) {
-        this.browserName = browserName;
-    }
-
-    public void setPlatform (Platform platform) {
-        platformName = platform;
-    }
-
-    @Before
-    public void setUp() throws Exception {
-        //Set DesiredCapabilities
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        //Firefox Profile Settings
-        if (browserName.equals("firefox")) {
-            FirefoxProfile profile = new FirefoxProfile();
-            //Accept Untrusted Certificates
-            profile.setAcceptUntrustedCertificates(true);
-            profile.setAssumeUntrustedCertificateIssuer(false);
-            //Use No Proxy Settings
-            profile.setPreference("network.proxy.type", 0);
-            //Set Firefox profile to capabilities
-            capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-        }
-        //Set Platform
-        capabilities.setPlatform(platformName);
-        //Set BrowserName
-        capabilities.setCapability("browserName", browserName);
-        capabilities.setCapability("build", "JUnit-Parallel");
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
-    }
-
-    //TakeScreenShot
-    public void takeScreenShot () {
-        driver = new Augmenter().augment(driver);
-        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String screenshotName = getClass().getSimpleName();
-        System.out.println("ScreenShotName: " + screenshotName);
-        try {
-            FileUtils.copyFile(srcFile, new File("screenshotName.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-}
-```
-
-
-
-```
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.Platform;
-
-@RunWith(Parallelized.class)
-public class GridParallelTest extends GridParallelTestBase{
-
-    //Constructor
-    public GridParallelTest(String browserName) {
-        super(browserName);
-    }
-
-    @Test
-    public void parallelGridTest() throws Exception {
-        //Set Platform Name
-        setPlatform(Platform.WIN10);
-
-        //Go to Amazon.com
-        System.out.println("Test is started for: "+ browserName);
-        driver.get("http://www.yahoo.com");
-        System.out.println("Page title is: " + driver.getTitle());
-        System.out.println("Test is finished for: "+ browserName);
-
-        //ScreenShot Section
-        takeScreenShot();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        driver.quit();
-    }
-}
-```
+#### Run Application:
 
 After run this test you will see that two browsers (Chrome & Firefox)
 will open in parallel and tests will be passed.
 
-![](./images/img_583ace73ec3ef.png)
+![](./images/p1.png)
+
+![](./images/p2.png)
 
