@@ -23,7 +23,7 @@ public class GridExampleTest {
     //Setup Driver
     @BeforeClass
     public static void setupTest() throws MalformedURLException {
-        /*String chromeDriverLocation = "C:\\Selenium\\drivers\\chrome\\chromedriver.exe";
+        /*String chromeDriverLocation = System.getProperty("user.dir") + "\\tools\\drivers\\chrome\\chromedriver.exe";
         System.out.println("Chrome Driver: " + chromeDriverLocation );
         System.setProperty("webdriver.chrome.driver", chromeDriverLocation);
         driver = new ChromeDriver();*/
