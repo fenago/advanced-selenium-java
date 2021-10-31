@@ -85,12 +85,20 @@ java -jar -Dwebdriver.chrome.driver=C:\Selenium\drivers\chrome\chromedriver.exe 
 ```
 
 
-Let's write a very simple test that clicks the Facebook login button. Before
+**Lab Solution:**
+
+Lab solution is present in following directory:
+
+`C:\Users\fenago\Desktop\advanced-selenium-java\Lab05`
+
+Let's write a very simple test that enter inputs in the Facebook login page. Before
 running the below test, start the hub and the node with the above
 command then run the test.
 
 
 ```
+package grid;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -114,24 +122,32 @@ public class GridExampleTest {
     //Setup Driver
     @BeforeClass
     public static void setupTest() throws MalformedURLException {
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
-        //For Firefox use below capabilities
-        //DesiredCapabilities caps = DesiredCapabilities.firefox();
+        /*String chromeDriverLocation = "C:\\Selenium\\drivers\\chrome\\chromedriver.exe";
+        System.out.println("Chrome Driver: " + chromeDriverLocation );
+        System.setProperty("webdriver.chrome.driver", chromeDriverLocation);
+        driver = new ChromeDriver();*/
+        /*DesiredCapabilities caps = DesiredCapabilities.chrome();
         caps.setPlatform(Platform.WINDOWS);
+
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);*/
+
+        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        caps.setPlatform(Platform.WINDOWS);
+
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
     }
 
     @Test
     public void T01_FacebookLogin() {
         //Navigate to facebook.com
-        driver.navigate().to("https://www.facebook.com/");
+        driver.navigate().to("https://web.facebook.com/");
         driver.manage().window().maximize();
 
-        //Login Button
-        WebElement loginButton = driver.findElement(By.id("loginbutton"));
-
-        //Actions example
-        loginButton.click();
+        //Enter input
+        WebElement emailId = driver.findElement(By.id("email"));
+        emailId.sendKeys("selenium");
+        WebElement password = driver.findElement(By.id("pass"));
+        emailId.sendKeys("selenium");
     }
 
     //Close Driver
@@ -140,6 +156,7 @@ public class GridExampleTest {
         driver.quit();
     }
 }
+
 ```
 
 **Selenium Grid Nodes and Hub Configurations by JSON**
